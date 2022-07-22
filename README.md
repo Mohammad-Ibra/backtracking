@@ -100,3 +100,48 @@ If the path does not reach the destination then backtrack and try other paths.
 5. Recursively call for position (i-1,j), (I,j-1), (i+1, j) and (i, j+1)
 6. Unmark position (i, j), i.e output[i][j] = 0.
 ```
+
+### N queen problem
+
+**Setting up the problem**
+
+The N Queen is the problem of placing N chess queens on an N×N chessboard so that no two queens attack each other.
+
+**Example**
+
+```
+    Input:
+    N = 4
+```
+```
+    Output:
+    [
+        [0,1,0,0],
+        [0,0,0,1],
+        [1,0,0,0],
+        [0,0,1,0]
+    ]
+```
+
+The idea is to place queens one by one in different columns, starting from the leftmost column. When we place a queen in a column, we check for clashes with already placed queens. In the current column, if we find a row for which there is no clash, we mark this row and column as part of the solution. If we do not find such a row due to clashes, then we backtrack and return false.
+
+The logic behind the backtracking algorithm for the N-queens problem is:
+
+```
+1. Start in the leftmost column.
+2. If all queen are placed return True.
+3. Try all rows in the current column. 
+    For every tried row we do the following:
+    a. If the queen can be placed safely in this row 
+       then mark this [row, column] as part of the 
+       solution and recursively check if placing
+       queen here leads to a solution.
+    b. If placing the queen in [row, column] leads to
+       a solution then return true.
+    c. If placing queen doesn't lead to a solution then
+       unmark this [row, column] (Backtrack) and go to 
+       step (a) to try other rows.
+4. If all rows have been tried and nothing worked,
+   return false to trigger backtracking.
+
+```
