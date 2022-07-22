@@ -57,5 +57,46 @@ else:
     a. Add one of the next moves to the solution vector and recursively check if this move lead to a solution.
     (A knight can make a maximum of 8 moves. We choose of these 8 moves in this step.)
     b. If the move chosen in the above step doesn't lead to a solution then remove this move from the solution vector and try other alternative moves.
-    c. If none of the alternatives work then return false (Returning false will remove the previously added item in recursion and if false is returned by the initial call of recursion then "no solution exists")
+    c. If none of the alternatives work then return false (Returning false will remove the previously added item in recursion and if false is returned by the initial call of recursion then "no solution exists"
+```
+
+### Rat in a maze
+
+**Setting up the problem**
+
+A rat starts from source and has to reach the destination. The rat can move to up, down, right and left. In the maze matrix, 0 means the block is a dead end and 1 means the block can be used in the path from source to destination
+
+**Example**
+
+```
+    Input:
+    [
+        [1,0,0,0],
+        [1,1,0,1],
+        [0,1,0,0],
+        [1,1,1,1],
+    ]
+```
+```
+    Output:
+    [
+        [1,0,0,0],
+        [1,1,0,0],
+        [0,1,0,0],
+        [0,1,1,1],
+    ]
+```
+
+The logic behind the backtracking algorithm of the rat in a maze problem is:
+
+```
+The approach is to form a recursive function, which will follow a path and checks if the path reaches the destination or not.
+If the path does not reach the destination then backtrack and try other paths. 
+
+1. create a solution matrix initially filled with 0s.
+2. create a recursive function which takes the initial matrix and returns matrix and position of the rat.
+3. If the position is out of the matrix or not valid, then return.
+4. Mark the position output[i][j] as 1 and check if the current position is destination or not. If destination is reached print the output matrix and return.
+5. Recursively call for position (i-1,j), (I,j-1), (i+1, j) and (i, j+1)
+6. Unmark position (i, j), i.e output[i][j] = 0.
 ```
