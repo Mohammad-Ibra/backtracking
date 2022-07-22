@@ -47,3 +47,15 @@ must visit each square exactly once. Print the order of each cell in which they 
     56  43  52   3  22  13  24   5
     51  46  55  44  53   4  21  12
 ```
+
+The logic behind the backtracking algorithm for the knight's tour problem:
+
+```
+if all squares are visited:
+    print the solution
+else:
+    a. Add one of the next moves to the solution vector and recursively check if this move lead to a solution.
+    (A knight can make a maximum of 8 moves. We choose of these 8 moves in this step.)
+    b. If the move chosen in the above step doesn't lead to a solution then remove this move from the solution vector and try other alternative moves.
+    c. If none of the alternatives work then return false (Returning false will remove the previously added item in recursion and if false is returned by the initial call of recursion then "no solution exists")
+```
