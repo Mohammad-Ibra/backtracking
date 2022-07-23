@@ -7,11 +7,11 @@ def is_safe(subset, j):
 
 def solve(subset):
 
+    if sum(subset) == M:
+            return True
+
     for i in INITIALSET.difference(subset):
         new_elemnet = i
-
-        if sum(subset) == M:
-            return True
 
         if is_safe(subset, new_elemnet):
             subset.add(new_elemnet)
