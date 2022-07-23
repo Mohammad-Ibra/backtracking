@@ -143,5 +143,33 @@ The logic behind the backtracking algorithm for the N-queens problem is:
        step (a) to try other rows.
 4. If all rows have been tried and nothing worked,
    return false to trigger backtracking.
+```
+### Subset Sum
 
+**Setting up the problem**
+
+Given a non-empty array of positive integer, find the subset where its sum is equal to a desired outcome. It is assumed that the 
+input set is unique. (No duplicates are presented.)
+
+**Example**
+
+```
+    Input:
+    nums = [1,5,4,11]
+    sum = 10
+```
+```
+    Output:
+    [1,5,4]
+```
+
+The logic behind the backtracking algorithm for the subset sum problem is:
+
+```
+1. Start with an empty set
+2. Add the next element from the list to the set
+3. If the subset is having sum M, then stop with that subset as a solution.
+4. If the subset is not feasible, or if we have reached the end of the set, then backtrack through the subset until we find the most suitable solution.
+5. If the subset is feasible (sum of subset < M>) then repeat step 2.
+6. If we have visited all elements without finding a suitable solution and if no backtracking is feasible, then there is no solution. 
 ```
