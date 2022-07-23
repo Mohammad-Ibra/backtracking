@@ -1,20 +1,21 @@
-subset = []
+subset = set()
 
 def is_safe(subset, j):
-    if sum(subset) + INITIALSET[j] <= M:
+    if sum(subset) + j <= M:
         return True
     return False
 
-def solve(subset, i):
+def solve(subset):
 
-    for j in range(i,len(INITIALSET)):
+    for i in INITIALSET.difference(subset):
+        new_elemnet = i
 
         if sum(subset) == M:
             return True
 
-        if is_safe(subset, j):
-            subset.append(INITIALSET[j])
-            if solve(subset, i+1):
+        if is_safe(subset, new_elemnet):
+            subset.add(new_elemnet)
+            if solve(subset):
                 return True
 
             subset.pop()
@@ -23,13 +24,13 @@ def solve(subset, i):
 
 
 def main():
-    solve(subset, 0)
+    solve(subset)
     print(subset)
 
 if __name__ == "__main__":
     global M
     global INITIALSET
-    INITIALSET = [int(i) for i in input('nums = ').split(" ")]
+    INITIALSET = set([int(i) for i in input('nums = ').split(" ")])
     M = int(input('SUM = '))
     main()
     
